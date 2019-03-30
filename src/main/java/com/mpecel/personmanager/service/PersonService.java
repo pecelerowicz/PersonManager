@@ -4,12 +4,16 @@ import com.mpecel.personmanager.dao.FakePersonDataAccessService;
 import com.mpecel.personmanager.dao.PersonDao;
 import com.mpecel.personmanager.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PersonService {
 
     private final PersonDao personDao;
 
-    public PersonService(PersonDao personDao) {
+    @Autowired
+    public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
         this.personDao = personDao;
     }
 
