@@ -1,0 +1,15 @@
+package com.mpecel.personmanager.dao;
+
+import com.mpecel.personmanager.model.Person;
+
+import java.util.UUID;
+
+public interface PersonDao {
+
+    int insertPerson(UUID id, Person person);
+
+    default int insertPerson(Person person) {
+        UUID id = UUID.randomUUID();
+        return insertPerson(id, person);
+    }
+}
